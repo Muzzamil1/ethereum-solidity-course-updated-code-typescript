@@ -11,7 +11,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd ethereum-solidity-course-updated-code-typescript/1.Inbox
+  cd ethereum-solidity-course-updated-code-typescript-main/1.Inbox
 
 ```
 
