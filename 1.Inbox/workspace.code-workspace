@@ -37,7 +37,8 @@
       "**/.DS_Store": true,
       "**/Thumbs.db": true,
       "**/node_modules": true,
-      "node_modules": true
+      "node_modules": true,
+      "yarn.lock": true
     },
     "explorerExclude.backup": null,
     "cSpell.words": ["ethlint", "hdwallet", "solhint", "sonarjs"]
