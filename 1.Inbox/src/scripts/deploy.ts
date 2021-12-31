@@ -3,7 +3,7 @@ import { compiledContract } from 'scripts/compile';
 import { config } from 'scripts/config';
 import Web3 from 'web3';
 
-import { Dai } from '../typechain/dai';
+import { Dai } from '../generatedTypes/dai';
 
 const { abi, evm, } = compiledContract;
 const mnemonicPhrase = config.accountMnemonic;

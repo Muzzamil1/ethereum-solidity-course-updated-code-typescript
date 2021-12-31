@@ -5,7 +5,7 @@ import assert from 'assert';
 import { compiledContract } from 'scripts/compile';
 import Web3 from 'web3';
 
-import { Dai } from '../typechain/dai';
+import { Dai } from '../generatedTypes/dai';
 // eslint-disable-next-line node/no-extraneous-import
 // import { Contract } from 'web3-eth-contract';
 

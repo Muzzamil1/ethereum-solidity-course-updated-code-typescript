@@ -4,6 +4,7 @@
 cache/
 build/
 typechain/
+generatedTypes/
 abi/
 artifacts/
 coverage*

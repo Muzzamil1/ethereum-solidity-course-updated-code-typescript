@@ -22,7 +22,7 @@ writeFileSync(abiFilePath, JSON.stringify(compiledContract).toString());
 
 //* Typechain
 async function main() {
-  const outDirectory = path.resolve(__dirname, '../', 'typechain');
+  const outDirectory = path.resolve(__dirname, '../', 'generatedTypes');
 
   // create typechain directory if not exist
   if (!existsSync(outDirectory)) {
