@@ -4,9 +4,12 @@
 import assert from 'assert';
 import { compiledContract } from 'scripts/compile';
 import Web3 from 'web3';
-// eslint-disable-next-line node/no-extraneous-import
-import { Contract } from 'web3-eth-contract';
 
+import { Dai } from '../typechain/dai';
+// eslint-disable-next-line node/no-extraneous-import
+// import { Contract } from 'web3-eth-contract';
+
+;
 // types are not available --> https://stackoverflow.com/a/42505940
 const ganache = require('ganache-cli');
 
@@ -17,7 +20,8 @@ const web3 = new Web3(provider);
 
 const message = 'Hi there!';
 let accounts: string[];
-let inbox: Contract;
+// let inbox: Contract;
+let inbox: Dai;
 
 beforeEach(async () => {
   // Get a list of all accounts.
@@ -32,7 +36,7 @@ beforeEach(async () => {
     .send({
       from: accounts[0],
       gas: 1_000_000,
-    });
+    }) as unknown as Dai;
 
 });
 
