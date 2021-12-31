@@ -1,5 +1,13 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+
+cache/
+build/
+typechain/
+abi/
+artifacts/
+coverage*
+
 # dependencies
 /.pnp
 .pnp.js

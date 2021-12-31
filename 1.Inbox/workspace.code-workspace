@@ -41,6 +41,6 @@
       "yarn.lock": true
     },
     "explorerExclude.backup": null,
-    "cSpell.words": ["ethlint", "hdwallet", "solhint", "sonarjs"]
+    "cSpell.words": ["ethlint", "hdwallet", "solhint", "sonarjs", "typechain"]
   }
 }
