@@ -33,6 +33,14 @@ To compile, run the following command
   yarn compile
 ```
 
+## Generate Contract Types
+
+To generate contract types, run the following command
+
+```bash
+  yarn typechain
+```
+
 ## Running Tests
 
 To run tests, run the following command
