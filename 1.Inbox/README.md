@@ -38,7 +38,7 @@ To compile, run the following command
 To generate contract types, run the following command
 
 ```bash
-  yarn typechain
+  yarn generate-types
 ```
 
 ## Running Tests

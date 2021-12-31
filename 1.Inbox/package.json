@@ -13,8 +13,8 @@
     "test": "SET NODE_PATH=./src&& npx env-cmd -f ./config/test.env mocha  --timeout 10000 --require ts-node/register src/tests/*.test.ts",
     "deploy": "yarn test && SET NODE_PATH=./src&& npx env-cmd -f ./config/prod.env ts-node src/scripts/deploy.ts",
     "build": "tsc",
-    "typechain": " ts-node src/scripts/generateTypes.ts",
-    "typechain:watch": " nodemon --exec ts-node src/scripts/generateTypes.ts",
+    "generate-types": " ts-node src/scripts/generateTypes.ts",
+    "generate-types:watch": " nodemon --exec ts-node src/scripts/generateTypes.ts",
     "prettier:solidity": "npx prettier --write contracts/**/*.sol"
   },
   "keywords": [],
