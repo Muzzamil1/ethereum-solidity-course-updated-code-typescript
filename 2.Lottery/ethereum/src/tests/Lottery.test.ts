@@ -1,0 +1,106 @@
+/* eslint-disable no-undef */
+/* eslint-disable unicorn/prefer-module */
+/* eslint-disable @typescript-eslint/no-var-requires */
+import assert from 'assert';
+import { compiledContract } from 'scripts/compile';
+import { enterPlayerInLottery } from 'utils/helper';
+import Web3 from 'web3';
+
+import { Dai } from '../generatedTypes/dai';
+
+// types are not available --> https://stackoverflow.com/a/42505940
+const ganache = require('ganache-cli');
+
+const { abi, evm, } = compiledContract;
+
+const provider = ganache.provider();
+const web3 = new Web3(provider);
+
+let accounts: string[];
+let lottery: Dai;
+
+beforeEach(async () => {
+  // Get a list of all accounts.
+  accounts = await web3.eth.getAccounts();
+
+  // Use one of those accounts to deploy the contract.
+  lottery = (await new web3.eth.Contract(abi)
+    .deploy({ data: '0x' + evm.bytecode.object, })
+    .send({
+      from: accounts[0],
+      gas: 1_000_000,
+    })) as unknown as Dai;
+});
+
+describe('Lottery Contract', () => {
+  it('deploys a contract', () => {
+    assert.ok(lottery.options.address);
+  });
+
+  it('allows one account to enter', async () => {
+    await enterPlayerInLottery(lottery, accounts[1], web3, '0.02');
+
+    const players = await lottery.methods.getPlayers().call({
+      from: accounts[0],
+    });
+
+    assert.strictEqual(players[0], accounts[1]);
+    assert.strictEqual(players.length, 1);
+  });
+
+  it('allows multiple accounts to enter', async () => {
+    await enterPlayerInLottery(lottery, accounts[1], web3, '0.02');
+    await enterPlayerInLottery(lottery, accounts[2], web3, '0.02');
+    await enterPlayerInLottery(lottery, accounts[3], web3, '0.02');
+
+    const players = await lottery.methods.getPlayers().call({
+      from: accounts[0],
+    });
+
+    assert.strictEqual(players[0], accounts[1]);
+    assert.strictEqual(players[1], accounts[2]);
+    assert.strictEqual(players[2], accounts[3]);
+    assert.strictEqual(players.length, 3);
+  });
+
+  it('requires a minimum amount of ether to enter', async () => {
+    try {
+      await enterPlayerInLottery(lottery, accounts[4], web3, '0');
+      assert(false);
+    } catch (error) {
+      assert(error);
+    }
+  });
+
+  it('only manager can call pickWinner', async () => {
+    try {
+      await lottery.methods.pickWinner().send({
+        from: accounts[1],
+      });
+
+      assert(false);
+    } catch (error) {
+      assert(error);
+    }
+  });
+
+  it('sends money to the winner and resets the players array', async () => {
+    await enterPlayerInLottery(lottery, accounts[1], web3, '2');
+
+    const initialBalance = await web3.eth.getBalance(accounts[1]);
+
+    await lottery.methods.pickWinner().send({
+      from: accounts[0],
+    });
+
+    const finalBalance = await web3.eth.getBalance(accounts[1]);
+    //+ converts the string to number
+    const difference = +finalBalance - +initialBalance;
+
+    assert(difference > +web3.utils.toWei('1.8', 'ether'));
+  });
+
+  // we can add 2 more tests here
+  // 1. Check if player array got reset after picking the winner
+  // 2. Check if lottery balance is zero after picking the winner
+});
