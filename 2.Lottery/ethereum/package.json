@@ -1,7 +1,7 @@
 {
-  "name": "inbox-typescript",
+  "name": "lottery",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lottery smart contract Node.js TypeScript project.",
   "main": "index.js",
   "engines": {
     "npm": ">=8.1.0",
