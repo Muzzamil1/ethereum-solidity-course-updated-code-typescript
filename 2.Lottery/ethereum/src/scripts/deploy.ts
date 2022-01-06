@@ -33,6 +33,7 @@ const deploy = async () => {
     })
     .send({ from: accounts[0], })) as unknown as Dai;
 
+  console.log('abi is:',abi)
   console.log('Contract deployed to', result.options.address);
   provider.engine.stop();
 };
