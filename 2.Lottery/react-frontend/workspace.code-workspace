@@ -36,6 +36,7 @@
       "node_modules": true,
       "**/yarn.lock": true
     },
-    "explorerExclude.backup": null
+    "explorerExclude.backup": null,
+    "cSpell.words": ["sonarjs", "Udemy"]
   }
 }
