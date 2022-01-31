@@ -1,4 +1,4 @@
-# Solidity Typescript Boilerplate
+# Inbox Smart Contract
 
 ## Install Dependencies
 
