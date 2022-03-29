@@ -1,5 +1,5 @@
-import Campaign from 'ethereum/src/build/Campaign.json';
-import { Campaign as TCampaign } from 'ethereum/src/generatedTypes/Campaign';
+import Campaign from './ethereum/build/Campaign.json';
+import { Campaign as TCampaign } from './ethereum/generatedTypes/Campaign';
 
 import web3 from './web3';
 

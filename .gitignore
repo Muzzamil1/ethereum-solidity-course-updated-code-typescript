@@ -2,9 +2,9 @@
 
 
 cache/
-build/
+# build/
 typechain/
-generatedTypes/
+# generatedTypes/
 abi/
 artifacts/
 coverage*
