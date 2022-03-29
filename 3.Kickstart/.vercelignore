@@ -1,5 +1,5 @@
-ethereum/src/contracts/
-ethereum/src/scripts/
-ethereum/src/tests/
+ethereum/src/contracts
+ethereum/src/scripts
+ethereum/src/tests
 ethereum/src/package.json
 ethereum/src/tsconfig.json
