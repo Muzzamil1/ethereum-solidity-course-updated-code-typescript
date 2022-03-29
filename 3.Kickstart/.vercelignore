@@ -1,3 +1,5 @@
-/*ethereum/
-!ethereum/build
-!ethereum/generatedTypes
+/ethereum/contracts/
+/ethereum/scripts/
+/ethereum/tests/
+/ethereum/package.json
+/ethereum/tsconfig.json
