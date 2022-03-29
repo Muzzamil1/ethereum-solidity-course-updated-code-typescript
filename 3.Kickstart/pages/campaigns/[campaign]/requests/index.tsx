@@ -103,7 +103,7 @@ RequestIndex.getInitialProps = async (context: NextPageContext) => {
 
   const requests = await Promise.all(
     Array(parseInt(requestCount))
-      .fill()
+      .fill(undefined)
       .map((element, index) => {
         return campaignContract.methods.requests(index).call();
       })
